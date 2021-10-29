@@ -92,5 +92,14 @@ public class CellTest {
         assertEquals(Cell.CellState.DEAD, actual);
     }
 
+    @Test
+    public void deadCellWithThreeNeighboursShouldBecomeAlive(){
+        Cell changingCell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = changingCell.getNextGeneration(3);
+
+        assertEquals(Cell.CellState.ALIVE, actual);
+    }
+
 
 }
