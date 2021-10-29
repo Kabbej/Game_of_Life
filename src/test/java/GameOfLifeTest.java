@@ -13,7 +13,7 @@ public class GameOfLifeTest {
 
 
     @Test
-    public void aliveCellWithFewerThanTwoNeighboursShouldDie(){
+    public void aliveCellWithOnlyOneNeighbourShouldDie(){
         Cell changingCell = new Cell(Cell.CellState.ALIVE);
 
         Cell.CellState actual = changingCell.getNextState(1);
@@ -27,6 +27,8 @@ public class GameOfLifeTest {
 
         Cell.CellState actual = changingCell.getNextState(0);
     }
+
+
 
 
 }
