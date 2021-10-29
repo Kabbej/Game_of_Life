@@ -47,6 +47,15 @@ public class GameOfLifeTest {
         assertEquals(Cell.CellState.ALIVE, actual);
     }
 
+    @Test
+    public void aliveCellWithFourNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
+
+        Cell.CellState actual = changingCell.getNextGeneration(4);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
 
 
 

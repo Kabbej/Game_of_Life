@@ -11,7 +11,7 @@ public class Cell {
     }
 
     public CellState getNextGeneration(int i) {
-        return i < 2 ? CellState.DEAD : CellState.ALIVE;
+        return i > 1 && i <4 ?  CellState.ALIVE : CellState.DEAD;
     }
 
 
