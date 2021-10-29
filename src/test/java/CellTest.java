@@ -56,9 +56,41 @@ public class CellTest {
         assertEquals(Cell.CellState.DEAD, actual);
     }
 
+    @Test
+    public void aliveCellWithFiveNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
 
+        Cell.CellState actual = changingCell.getNextGeneration(5);
 
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
 
+    @Test
+    public void aliveCellWithSixNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
+
+        Cell.CellState actual = changingCell.getNextGeneration(6);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void aliveCellWithSevenNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
+
+        Cell.CellState actual = changingCell.getNextGeneration(7);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void aliveCellWithEightNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
+
+        Cell.CellState actual = changingCell.getNextGeneration(8);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
 
 
 }
