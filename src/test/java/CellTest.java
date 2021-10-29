@@ -8,9 +8,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CellTest {
-
 
     @Test
     public void aliveCellWithOnlyOneNeighbourShouldDie(){
@@ -101,5 +102,76 @@ public class CellTest {
         assertEquals(Cell.CellState.ALIVE, actual);
     }
 
+    @Test
+    public void deadCellWithZeroNeighboursShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(0);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithOneNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(1);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithTwoNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(2);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithFourNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(4);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithFiveNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(5);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithSixNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(6);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithSevenNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(7);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
+
+    @Test
+    public void deadCellWithEightNeighbourShouldStayDead(){
+        Cell cell = new Cell(Cell.CellState.DEAD);
+
+        Cell.CellState actual = cell.getNextGeneration(8);
+
+        assertEquals(Cell.CellState.DEAD, actual);
+    }
 
 }
