@@ -21,7 +21,12 @@ public class GameOfLifeTest {
         assertEquals(Cell.CellState.DEAD, actual);
     }
 
+    @Test
+    public void aliveCellWithZeroNeighboursShouldDie(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
 
+        Cell.CellState actual = changingCell.getNextState(0);
+    }
 
 
 }
