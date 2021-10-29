@@ -16,7 +16,7 @@ public class GameOfLifeTest {
     public void aliveCellWithOnlyOneNeighbourShouldDie(){
         Cell changingCell = new Cell(Cell.CellState.ALIVE);
 
-        Cell.CellState actual = changingCell.getNextState(1);
+        Cell.CellState actual = changingCell.getNextGeneration(1);
 
         assertEquals(Cell.CellState.DEAD, actual);
     }
@@ -25,8 +25,20 @@ public class GameOfLifeTest {
     public void aliveCellWithZeroNeighboursShouldDie(){
         Cell changingCell = new Cell(Cell.CellState.ALIVE);
 
-        Cell.CellState actual = changingCell.getNextState(0);
+        Cell.CellState actual = changingCell.getNextGeneration(0);
+        assertEquals(Cell.CellState.DEAD, actual);
     }
+
+    @Test
+    public void aliveCellWithTwoNeighboursShouldLive(){
+        Cell changingCell = new Cell(Cell.CellState.ALIVE);
+
+        Cell.CellState actual = changingCell.getNextGeneration(2);
+
+        assertEquals(Cell.CellState.ALIVE, actual);
+    }
+
+
 
 
 

@@ -10,8 +10,8 @@ public class Cell {
         DEAD,ALIVE
     }
 
-    public CellState getNextState(int i) {
-        return CellState.DEAD;
+    public CellState getNextGeneration(int i) {
+        return i < 2 ? CellState.DEAD : CellState.ALIVE;
     }
 
 
