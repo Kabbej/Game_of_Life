@@ -1,21 +1,24 @@
 public class Cell {
 
-    private CellState state;
+    private cellState state;
 
-    public Cell(CellState state){
+    public Cell(cellState state){
         this.state = state;
     }
 
-    public enum CellState {
+    public cellState getState() {
+        return state;
+    }
+
+    public enum cellState {
         DEAD,ALIVE
     }
 
-    public CellState getNextGeneration(int i) {
-        if (state == CellState.ALIVE) {
-            return i > 1 && i < 4 ? CellState.ALIVE : CellState.DEAD;
-        }
-        else {
-            return i == 3 ? CellState.ALIVE : CellState.DEAD;
+    public cellState getNextGeneration(int i) {
+        if (state == cellState.ALIVE) {
+           return state = i > 1 && i < 4 ? cellState.ALIVE : cellState.DEAD;
+        } else {
+           return state = i == 3 ? cellState.ALIVE : cellState.DEAD;
         }
     }
 
