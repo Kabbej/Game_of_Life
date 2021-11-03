@@ -35,7 +35,7 @@ public class Universe {
     public void update() {
         for (int row = 0; row < state.length; row++){
             for (int col = 0; col < state[row].length; col++){
-                state[row][col].getNextGeneration(0);
+                state[row][col].update(0);
             }
         }
     }

@@ -12,15 +12,16 @@ public class Cell {
         return state;
     }
 
+
     public enum cellState {
         DEAD,ALIVE
     }
 
-    public cellState getNextGeneration(int i) {
+    public void update (int i) {
         if (state == cellState.ALIVE) {
-           return state = i > 1 && i < 4 ? cellState.ALIVE : cellState.DEAD;
+            state = i > 1 && i < 4 ? cellState.ALIVE : cellState.DEAD;
         } else {
-           return state = i == 3 ? cellState.ALIVE : cellState.DEAD;
+            state = i == 3 ? cellState.ALIVE : cellState.DEAD;
         }
     }
 

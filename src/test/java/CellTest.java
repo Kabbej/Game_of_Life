@@ -42,16 +42,16 @@ public class CellTest {
         Cell.cellState initialState = Cell.cellState.valueOf(initial);
         Cell testCell = new Cell(initialState);
 
-        testCell.getNextGeneration(numberOfNeighbours);
-        Cell.cellState actual = testCell.getState();
+        //testCell.getNextGeneration(numberOfNeighbours);
 
         testCell.update(numberOfNeighbours);
+
+        Cell.cellState actual = testCell.getState();
 
         Cell.cellState expectedState = Cell.cellState.valueOf(expected);
         assertEquals(expectedState, actual);
 
     }
-
 
     @Test
     @Parameters({"ALIVE", "DEAD"})
