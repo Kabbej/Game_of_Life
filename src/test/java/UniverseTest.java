@@ -2,7 +2,7 @@ import org.junit.Test;
 import se.iths.gameOfLife.Cell;
 import se.iths.gameOfLife.Universe;
 import se.iths.gameOfLife.Cell.cellState;
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
 public class UniverseTest {
@@ -22,6 +22,17 @@ public class UniverseTest {
 
         Cell.cellState[][] actual = testUniverse.getState();
         assertArrayEquals(original, actual);
+
+    }
+
+    @Test
+    public void shouldUpdateCells(){
+       Universe testUniverse = new Universe(new cellState[][]{{X}});
+
+       testUniverse.update();
+       cellState[][] actual = testUniverse.getState();
+
+       assertEquals(cellState.DEAD, actual[0][0])
 
     }
 }
