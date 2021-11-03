@@ -61,9 +61,7 @@ public class Universe {
     private int getNumberOfAliveNeighboursInRow(cellState[][] state, int row, int col) {
         int numberOfAliveNeighbours = 0;
         numberOfAliveNeighbours += getCountIfCellIsAlive(state, row, col - 1);
-        if (state[row][col] == cellState.ALIVE){
-            numberOfAliveNeighbours ++;
-        }
+        numberOfAliveNeighbours += getCountIfCellIsAlive(state,row,col);
         numberOfAliveNeighbours += getCountIfCellIsAlive(state, row, col + 1 );
         return numberOfAliveNeighbours;
     }
@@ -76,6 +74,4 @@ public class Universe {
         }
         return 0;
     }
-
-
 }
