@@ -32,7 +32,7 @@ public class UniverseTest {
        testUniverse.update();
        cellState[][] actual = testUniverse.getState();
 
-       assertEquals(cellState.DEAD, actual[0][0])
+       assertEquals(cellState.DEAD, actual[0][0]);
 
     }
 }
