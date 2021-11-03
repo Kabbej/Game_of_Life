@@ -1,22 +1,12 @@
-
-/*
-1.  Any live cell with fewer than two live neighbors dies, as if caused by under population.
-2.  Any live cell with two or three live neighbors lives on to the next generation.
-3.  Any live cell with more than three live neighbors dies, as if by overpopulation.
-4.  Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-   */
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import se.iths.gameOfLife.Cell;
-
 import static org.junit.Assert.*;
-
 
 @RunWith(JUnitParamsRunner.class)
 public class CellTest {
-
     @Test
     @Parameters({
             "ALIVE, 0, DEAD",
@@ -38,28 +28,23 @@ public class CellTest {
             "DEAD, 7, DEAD",
             "DEAD, 8, DEAD",})
 
-    public void shouldCheckAllRulesForCells(String initial, int numberOfNeighbours, String expected) {
-        Cell.CellState initialState = Cell.CellState.valueOf(initial);
+    public void shouldCheckIfAllTheRulesIsWorking(String initial, int numberOfNeighbours, String expected){
+        Cell.cellState initialState = Cell.cellState.valueOf(initial);
         Cell testCell = new Cell(initialState);
 
-        //testCell.getNextGeneration(numberOfNeighbours);
-
         testCell.update(numberOfNeighbours);
+        Cell.cellState actual = testCell.getState();
 
-        Cell.CellState actual = testCell.getState();
-
-        Cell.CellState expectedState = Cell.CellState.valueOf(expected);
+        Cell.cellState expectedState = Cell.cellState.valueOf(expected);
         assertEquals(expectedState, actual);
-
     }
-
     @Test
     @Parameters({"ALIVE", "DEAD"})
-    public void shouldReturnCellState(String initial){
-        Cell.CellState original = Cell.CellState.valueOf(initial);
+    public void shouldReturnTheCellsState(String initial) {
+
+        Cell.cellState original = Cell.cellState.valueOf(initial);
         Cell testCell = new Cell(original);
 
         assertEquals(original, testCell.getState());
     }
-
 }

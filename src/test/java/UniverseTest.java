@@ -1,79 +1,76 @@
 import org.junit.Test;
+import se.iths.gameOfLife.Cell;
 import se.iths.gameOfLife.Universe;
-import se.iths.gameOfLife.Cell.CellState;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class UniverseTest {
 
-    public static final CellState X = CellState.ALIVE;
-    public static final CellState O = CellState.DEAD;
-
+    public static final Cell X = new Cell(Cell.cellState.ALIVE);
+    public static final Cell O = new Cell(Cell.cellState.DEAD);
 
     @Test
     public void shouldStoreTheInitialState(){
-        CellState[][] original = {
-                {O,O,O,O,O,O,O,O},
-                {O,O,O,O,X,O,O,O},
-                {O,O,O,X,X,O,O,O},
-                {O,O,O,O,O,O,O,O},
+        Cell[][] original = {
+                {X, O, X},
+                {O, O, O},
+                {O, X, X},
         };
         Universe testUniverse = new Universe(original);
 
-        CellState[][] actual = testUniverse.getState();
+        Cell[][] actual = testUniverse.getState();
         assertArrayEquals(original, actual);
 
     }
 
     @Test
     public void shouldUpdateCell(){
-       Universe testUniverse = new Universe(new CellState[][]{{X}});
+        Universe testUniverse = new Universe(new Cell[][]{
+                { X }
+        });
 
-       CellState[][] actual = getNextState(testUniverse);
+        Cell[][] actual = getNextState(testUniverse);
 
-       assertEquals(CellState.DEAD, actual[0][0]);
+        assertEquals(O, actual[0][0]);
     }
 
     @Test
-    public void shouldUpdateAllCellsState(){
-        Universe testUniverse = new Universe(new CellState[][] {
-                {O,O,O,O,O,O,O,O},
-                {O,O,O,O,X,O,O,O},
-                {O,O,O,X,X,O,O,O},
-                {O,O,O,O,O,O,O,O},
+    public void shouldUpdateAllCells() {
+        Universe testUniverse = new Universe(new Cell[][] {
+                { O, O, O, O, O, O, O, O },
+                { O, O, O, O, X, O, O, O },
+                { O, O, O, X, X, O, O, O },
+                { O, O, O, O, O, O, O, O }
         });
-        CellState[][] expected = new CellState[][]{
-                {O,O,O,O,O,O,O,O},
-                {O,O,O,X,X,O,O,O},
-                {O,O,O,X,X,O,O,O},
-                {O,O,O,O,O,O,O,O},
+        Cell[][] expected = new Cell[][] {
+                { O, O, O, O, O, O, O, O },
+                { O, O, O, X, X, O, O, O },
+                { O, O, O, X, X, O, O, O },
+                { O, O, O, O, O, O, O, O }
         };
 
-        CellState[][] actual = getNextState(testUniverse);
-
+        Cell[][] actual = getNextState(testUniverse);
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldCheckAllNeighbours(){
-        Universe testUniverse = new Universe(new CellState[][] {
-                {X, X, X},
-                {X, X, X},
-                {X, X, X}
+    public void ShouldHaveMaximumNeighbours(){
+        Universe testUniverse = new Universe(new Cell[][] {
+                {X, X, X },
+                {X, X, X },
+                {X, X, X }
         });
-        CellState[][] expected = new CellState[][]{
-                {X, O, X},
-                {O, O, O},
-                {X, O, X}
+        Cell[][] expected = new Cell[][] {
+                { X, O, X },
+                { O, O, O },
+                { X, O, X }
         };
 
-        CellState[][] actual = getNextState(testUniverse);
-
+        Cell[][] actual = getNextState(testUniverse);
         assertArrayEquals(expected, actual);
-
     }
 
-    private CellState[][] getNextState(Universe testUniverse) {
+    private Cell[][] getNextState(Universe testUniverse) {
         testUniverse.update();
         return testUniverse.getState();
     }
