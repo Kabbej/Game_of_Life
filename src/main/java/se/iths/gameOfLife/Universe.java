@@ -1,49 +1,45 @@
 package se.iths.gameOfLife;
-import se.iths.gameOfLife.Cell.cellState;
+import se.iths.gameOfLife.Cell.CellState;
 
 public class Universe {
 
     private Cell [][] state;
 
+    public Universe(CellState[][] CellStates){
+        state = new Cell[CellStates.length][];
 
-
-    public Universe(cellState [][] cellStates){
-        state = new Cell[cellStates.length][];
-
-        for (int row = 0; row < cellStates.length; row++) {
-            state[row] = new Cell[cellStates[row].length];
-            for (int col = 0; col < cellStates[row].length; col++) {
-                state[row][col] = new Cell(cellStates[row][col]);
+        for (int row = 0; row < CellStates.length; row++) {
+            state[row] = new Cell[CellStates[row].length];
+            for (int col = 0; col < CellStates[row].length; col++) {
+                state[row][col] = new Cell(CellStates[row][col]);
             }
         }
     }
 
-
-
-    public cellState[][] getState() {
-        Cell.cellState[][] cellStates = new Cell.cellState[state.length][];
+    public CellState[][] getState() {
+        CellState[][] CellStates = new CellState[state.length][];
 
         for (int row = 0; row < state.length; row++) {
-            cellStates[row] = new Cell.cellState[state[row].length];
+            CellStates[row] = new CellState[state[row].length];
             for (int col = 0; col < state[row].length; col++) {
-                cellStates[row][col] = state[row][col].getState();
+                CellStates[row][col] = state[row][col].getState();
             }
         }
-        return cellStates;
+        return CellStates;
     }
 
 
     public void update() {
-        Cell.cellState[][] cellStates = getState();
+        CellState[][] CellStates = getState();
         for (int row = 0; row < state.length; row++){
             for (int col = 0; col < state[row].length; col++){
-                int numberOfAliveNeighbours = getNumberOfAliveNeighbours(cellStates,row,col);
+                int numberOfAliveNeighbours = getNumberOfAliveNeighbours(CellStates,row,col);
                 state[row][col].update(numberOfAliveNeighbours);
             }
         }
     }
 
-    private int getNumberOfAliveNeighbours(Cell.cellState[][] state,int row,int col) {
+    private int getNumberOfAliveNeighbours(CellState[][] state, int row, int col) {
         int numberOfAliveNeighbours = 0;
 
         numberOfAliveNeighbours += getNumberOfAliveNeighboursInRow(state, row -1, col);
@@ -53,7 +49,7 @@ public class Universe {
          return numberOfAliveNeighbours;
     }
 
-    private int getNumberOfAliveNeighboursInRow(cellState[][] state, int row, int col) {
+    private int getNumberOfAliveNeighboursInRow(CellState[][] state, int row, int col) {
         int numberOfAliveNeighbours = 0;
         if(row >= 0 && row < state.length) {
             numberOfAliveNeighbours += getCountIfCellIsAlive(state, row, col - 1);
@@ -63,9 +59,9 @@ public class Universe {
         return numberOfAliveNeighbours;
     }
 
-    private int getCountIfCellIsAlive(cellState[][] state, int row, int col) {
+    private int getCountIfCellIsAlive(CellState[][] state, int row, int col) {
         if (col >= 0 &&col < state[row].length) {
-            if (state[row][col] == cellState.ALIVE) {
+            if (state[row][col] == CellState.ALIVE) {
                 return 1;
             }
         }

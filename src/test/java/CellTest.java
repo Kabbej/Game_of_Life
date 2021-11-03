@@ -39,16 +39,16 @@ public class CellTest {
             "DEAD, 8, DEAD",})
 
     public void shouldCheckAllRulesForCells(String initial, int numberOfNeighbours, String expected) {
-        Cell.cellState initialState = Cell.cellState.valueOf(initial);
+        Cell.CellState initialState = Cell.CellState.valueOf(initial);
         Cell testCell = new Cell(initialState);
 
         //testCell.getNextGeneration(numberOfNeighbours);
 
         testCell.update(numberOfNeighbours);
 
-        Cell.cellState actual = testCell.getState();
+        Cell.CellState actual = testCell.getState();
 
-        Cell.cellState expectedState = Cell.cellState.valueOf(expected);
+        Cell.CellState expectedState = Cell.CellState.valueOf(expected);
         assertEquals(expectedState, actual);
 
     }
@@ -56,7 +56,7 @@ public class CellTest {
     @Test
     @Parameters({"ALIVE", "DEAD"})
     public void shouldReturnCellState(String initial){
-        Cell.cellState original = Cell.cellState.valueOf(initial);
+        Cell.CellState original = Cell.CellState.valueOf(initial);
         Cell testCell = new Cell(original);
 
         assertEquals(original, testCell.getState());

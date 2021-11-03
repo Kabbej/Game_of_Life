@@ -2,26 +2,26 @@ package se.iths.gameOfLife;
 
 public class Cell {
 
-    private cellState state;
+    private CellState state;
 
-    public Cell(cellState state){
+    public Cell(CellState state){
         this.state = state;
     }
 
-    public cellState getState() {
+    public CellState getState() {
         return state;
     }
 
 
-    public enum cellState {
+    public enum CellState {
         DEAD,ALIVE
     }
 
     public void update (int i) {
-        if (state == cellState.ALIVE) {
-            state = i > 1 && i < 4 ? cellState.ALIVE : cellState.DEAD;
+        if (state == CellState.ALIVE) {
+            state = i > 1 && i < 4 ? CellState.ALIVE : CellState.DEAD;
         } else {
-            state = i == 3 ? cellState.ALIVE : cellState.DEAD;
+            state = i == 3 ? CellState.ALIVE : CellState.DEAD;
         }
     }
 
