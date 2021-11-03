@@ -47,28 +47,37 @@ public class Universe {
         int numberOfAliveNeighbours = 0;
         if(row > 0){
             int rowAbove = row -1;
-            numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, numberOfAliveNeighbours, rowAbove);
+            numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, rowAbove);
         }
 
         if(col > 0){
-            if (state[row][col -1] == cellState.ALIVE) numberOfAliveNeighbours ++;
+            if (state[row][col -1] == cellState.ALIVE){
+                numberOfAliveNeighbours ++;
+            }
         }
         if (col < state[row].length -1){
-            if (state[row][col + 1] == cellState.ALIVE) numberOfAliveNeighbours ++;
+            if (state[row][col + 1] == cellState.ALIVE){
+                numberOfAliveNeighbours ++;
+            }
         }
 
             if(row < state.length -1){
                 int rowBelow = row +1;
-                numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, numberOfAliveNeighbours, rowBelow);
+                numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, rowBelow);
             }
          return numberOfAliveNeighbours;
     }
 
-    private int getNumberOfAliveNeighboursInRow(cellState[][] state, int row, int col, int numberOfAliveNeighbours, int rowAbove) {
+    private int getNumberOfAliveNeighboursInRow(cellState[][] state, int row, int col, int rowAbove) {
+        int numberOfAliveNeighbours = 0;
         if(col > 0){
-            if (state[rowAbove][col -1] == cellState.ALIVE) numberOfAliveNeighbours ++;
+            if (state[rowAbove][col -1] == cellState.ALIVE) {
+                numberOfAliveNeighbours ++;
+            }
         }
-        if (state[rowAbove][col] == cellState.ALIVE) numberOfAliveNeighbours ++;
+        if (state[rowAbove][col] == cellState.ALIVE){
+            numberOfAliveNeighbours ++;
+        }
         if (col < state[row].length -1){
             if (state[rowAbove][col + 1] == cellState.ALIVE) numberOfAliveNeighbours ++;
         }
