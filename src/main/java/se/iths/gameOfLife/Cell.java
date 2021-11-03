@@ -1,3 +1,5 @@
+package se.iths.gameOfLife;
+
 public class Cell {
 
     private cellState state;
