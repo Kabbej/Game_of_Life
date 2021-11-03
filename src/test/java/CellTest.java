@@ -50,5 +50,11 @@ public class CellTest {
 
     }
 
+    @Test
+    public void shouldReturnState(){
+        Cell testCell = new Cell(Cell.cellState.ALIVE);
+        assertEquals(Cell.cellState.ALIVE, testCell.getState());
+    }
+
 
 }
