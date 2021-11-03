@@ -29,8 +29,7 @@ public class UniverseTest {
     public void shouldUpdateCell(){
        Universe testUniverse = new Universe(new cellState[][]{{X}});
 
-       testUniverse.update();
-       cellState[][] actual = testUniverse.getState();
+       cellState[][] actual = getNextState(testUniverse);
 
        assertEquals(cellState.DEAD, actual[0][0]);
     }
