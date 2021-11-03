@@ -12,17 +12,16 @@ public class UniverseTest {
 
 
     @Test
-    public void shouldStoreInitialState() {
-        cellState[][] firstArray = {
+    public void shouldStoreTheInitialState(){
+        cellState[][] original = {
                 {X, O, X},
                 {O, O, O},
                 {O, X, X},
         };
+        Universe testUniverse = new Universe(original);
 
-        Universe testUniverse = new Universe();
+        Cell.cellState[][] actual = testUniverse.getState();
+        assertArrayEquals(original, actual);
 
-        testUniverse.getState);
-
-
-        }
+    }
 }
