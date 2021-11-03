@@ -50,11 +50,16 @@ public class CellTest {
 
     }
 
+
     @Test
-    public void shouldReturnState(){
-        Cell testCell = new Cell(Cell.cellState.ALIVE);
-        assertEquals(Cell.cellState.ALIVE, testCell.getState());
+    @Parameters({"ALIVE", "DEAD"})
+    public void shouldReturnCellState(String initial){
+        Cell.cellState original = Cell.cellState.valueOf(initial);
+        Cell testCell = new Cell(original);
+
+        assertEquals(original, testCell.getState());
     }
+
 
 
 }
