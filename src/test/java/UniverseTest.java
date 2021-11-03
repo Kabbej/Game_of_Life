@@ -13,9 +13,10 @@ public class UniverseTest {
     @Test
     public void shouldStoreTheInitialState(){
         CellState[][] original = {
-                {X, O, X},
-                {O, O, O},
-                {O, X, X},
+                {O,O,O,O,O,O,O,O},
+                {O,O,O,O,X,O,O,O},
+                {O,O,O,X,X,O,O,O},
+                {O,O,O,O,O,O,O,O},
         };
         Universe testUniverse = new Universe(original);
 
@@ -36,14 +37,16 @@ public class UniverseTest {
     @Test
     public void shouldUpdateAllCellsState(){
         Universe testUniverse = new Universe(new CellState[][] {
-                {O, X, X},
-                {X, O, X},
-                {O, O, X}
+                {O,O,O,O,O,O,O,O},
+                {O,O,O,O,X,O,O,O},
+                {O,O,O,X,X,O,O,O},
+                {O,O,O,O,O,O,O,O},
         });
         CellState[][] expected = new CellState[][]{
-                {O, X, X},
-                {O, O, X},
-                {O, X, O}
+                {O,O,O,O,O,O,O,O},
+                {O,O,O,X,X,O,O,O},
+                {O,O,O,X,X,O,O,O},
+                {O,O,O,O,O,O,O,O},
         };
 
         CellState[][] actual = getNextState(testUniverse);
