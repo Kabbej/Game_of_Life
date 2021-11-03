@@ -47,7 +47,7 @@ public class Universe {
         int numberOfAliveNeighbours = 0;
         if(row > 0){
             int rowAbove = row -1;
-            numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, rowAbove);
+            numberOfAliveNeighbours += getNumberOfAliveNeighboursInRow(state, row, col, rowAbove);
         }
 
         if(col > 0){
@@ -63,7 +63,7 @@ public class Universe {
 
             if(row < state.length -1){
                 int rowBelow = row +1;
-                numberOfAliveNeighbours = getNumberOfAliveNeighboursInRow(state, row, col, rowBelow);
+                numberOfAliveNeighbours += getNumberOfAliveNeighboursInRow(state, row, col, rowBelow);
             }
          return numberOfAliveNeighbours;
     }
